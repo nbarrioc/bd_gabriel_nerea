@@ -3,7 +3,7 @@
 config = {
     'host' :'localhost',
     'port' : 3306,
-    'user' : 'biotec',
-    'password' : 'biotec_pwd',
+    'user' : 'disnet_user',
+    'password' : 'disnet_pwd',
     'database' : 'disnet_drugslayer' 
 }

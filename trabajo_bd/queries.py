@@ -20,7 +20,9 @@ def query_5a(conn):
             ORDER BY target_name_pref ASC
             LIMIT 20;
             """
-    target_type = input("Introduce un tipo de diana y a continuación se mostrarán los nombres de las primeras 20 dianas de ese tipo ordenadas alfabéticamente. Tipo de diana: ")
+    
+    print("Introduzca un tipo de diana y a continuación se mostrarán los nombres de las primeras 20 dianas de ese tipo ordenadas alfabéticamente.")
+    target_type = input("Tipo de diana: ")
 
     cursor.execute(query,(target_type,))
 
@@ -28,8 +30,7 @@ def query_5a(conn):
 
     cursor.close()
 
-    for row in data:
-        return row[0]
+    return data
 
 
 # %%
@@ -53,15 +54,14 @@ def query_5b(conn):
 
     cursor.close()
 
-    return data
+    for row in data:
+        return row
 
 
 # %%
 # Modification queries
 
 # 6. Deletes
-
-# 6a. List of interactions with lowest inferred score
 def query_6a(conn):
     cursor = conn.cursor()
     query1 = """
@@ -151,4 +151,3 @@ def query_7(conn):
 
     cursor.close()
 
-# %%

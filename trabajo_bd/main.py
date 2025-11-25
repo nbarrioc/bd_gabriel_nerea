@@ -12,21 +12,16 @@ try:
     conn = get_connection()
     print('Conexión satisfactoria')
 
-    # Cursor
-    cursor = conn.cursor()
+    # Starting menu and queries
 
-    # Start the menu for the user to interact with the database
+    # 5. Information about targets
 
-    # 5. Target information
-    target_type = input("Introduce un tipo de diana y a continuación se mostrarán los nombres de las primeras 20 dianas de ese tipo ordenadas alfabéticamente. Tipo de diana: ")
+    # 5a. Targets of a certain type given
+    list_targets = query_5a(conn)
 
-    cursor.execute(query_5a,(target_type))
+    print("Lista de las 20 primeras dianas ordenadas alfabéticamente:")
 
-    data = cursor.fetchall()
-    for row in data:
-        print("Primeras 20 dianas del tipo ", target_type, ":\n", row[1])
-    
-        
+    print(list_targets)
 
 
 
@@ -41,3 +36,5 @@ else:
     conn.close()
     print('Se ha cerrado la conexión correctamente')
 
+
+# %%
