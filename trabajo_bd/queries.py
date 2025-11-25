@@ -1,26 +1,62 @@
+# %%
 # Script to define the different queries that will be used
 
+import mysql.connector
+
+
+# %%
 # Selection queries
 
-query_5a = """
-           SELECT target_name_pref
-           FROM target
-           WHERE target_type = "%s"
-           ORDER BY target_name_pref ASC
-           LIMIT 20;
-           """
+# %%
+# 5. Information about targets
 
-query_5b = """
-           SELECT taxonomy_name
-           FROM organism, 
+# 5a. Targets of a certain target type given
+def query_5a(conn):
+    cursor = conn.cursor()
+    query = """
+            SELECT target_name_pref
+            FROM target
+            WHERE target_type = %s
+            ORDER BY target_name_pref ASC
+            LIMIT 20;
+            """
+    target_type = input("Introduce un tipo de diana y a continuación se mostrarán los nombres de las primeras 20 dianas de ese tipo ordenadas alfabéticamente. Tipo de diana: ")
+
+    cursor.execute(query,(target_type,))
+
+    data = cursor.fetchall()
+
+    cursor.close()
+
+    for row in data:
+        return row[0]
+
+
+# %%
+# 5b. Organism with the most number of targets
+def query_5b(conn):
+    cursor = conn.cursor()
+    query = """
+            SELECT taxonomy_name
+            FROM organism, 
                 (SELECT organism_id, COUNT(DISTINCT target_id) ntarget
 	            FROM target
 	            GROUP BY organism_id
 	            ORDER BY ntarget DESC
 	            LIMIT 1) ntar
-           WHERE taxonomy_id=organism_id;
-           """
+            WHERE taxonomy_id=organism_id;
+            """
+    
+    cursor.execute(query)
 
+    data = cursor.fetchone()
+
+    cursor.close()
+
+    return data
+
+
+# %%
 # Modification queries
 
 query_6a = """
