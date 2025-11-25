@@ -5,5 +5,7 @@ config = {
     'port' : 3306,
     'user' : 'disnet_user',
     'password' : 'disnet_pwd',
-    'database' : 'disnet_drugslayer' 
+    'database' : 'disnet_drugslayer',
 }
+
+# %%
