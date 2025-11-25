@@ -4,4 +4,6 @@ import mysql.connector
 import config_data
 
 def get_connection():
-    return mysql.connector.connect(**config_data.config)
+    conn = mysql.connector.connect(**config_data.config)
+    conn.autocommit = True
+    return conn
