@@ -54,15 +54,14 @@ def query_5b(conn):
 
     cursor.close()
 
-    for row in data:
-        return row
+    return data
 
 
 # %%
 # Modification queries
 
 # 6. Deletes
-def query_6a(conn):
+def query_6(conn):
     cursor = conn.cursor()
     query1 = """
            SELECT inferred_score, drug_name, disease_name
@@ -77,18 +76,11 @@ def query_6a(conn):
     
     cursor.execute(query1)
 
-    data1 = cursor.fetchall()
-
-    i = 0
-    interactions = []
-
-    for row in data1:
-        interactions[i] = row[0]
-        i = i+1
+    interactions = cursor.fetchall()
 
     query2 = """
              DELETE FROM drug_disease
-             WHERE inferred_score=%s AND
+             WHERE inferred_score BETWEEN %s AND %s AND
              drug_id =
                   (SELECT drug_id
                   FROM drug
@@ -99,13 +91,13 @@ def query_6a(conn):
 	              WHERE disease_name=%s AND
 		              disease_has_code.disease_id=disease.disease_id);
              """ 
-    
-    data2 = cursor.fetchall()
 
+    print("Lista de las 10 primeras interacciones con menor inferred score")
+    
     j = 1
 
-    for row in data2:
-        print("[",j,"]. ", row[0])
+    for row in interactions:
+        print("[",j,"]. ", row)
         j = j+1
     
     option_number = int(input("Por favor, introduzca el número de la fila que desea eliminar: "))
@@ -114,7 +106,7 @@ def query_6a(conn):
     drug_name_selected = interactions[option_number-1][1]
     disease_name_selected = interactions[option_number-1][2]
 
-    cursor.execute(query2,(inferred_score_selected,drug_name_selected,disease_name_selected,))
+    cursor.execute(query2,(inferred_score_selected-0.005,inferred_score_selected+0.005,drug_name_selected,disease_name_selected,))
 
     # Aquí habría que poner el conn.commit() si no estuviese el autocommit
 
@@ -132,15 +124,17 @@ def query_7(conn):
             VALUES (
 	            (SELECT drug_id
 	            FROM drug
-	            WHERE drug_name = "%s"),
+	            WHERE drug_name = %s),
 	            %s,
 	            %s);
           """
     
     print("Va a proceder a crear una nueva entrada en la base de datos con la información de codificación de un fármaco ya existente.")
-    print("Debe introducir los siguientes valores en el siguiente orden: nombre del fármaco, nuevo identificador del fármaco y nombre del vocabulario")
-    list_drug_code_values = input("Por favor, introduzca los valores: ")
-    
+    print("Debe introducir los siguientes valores separados por comas en el siguiente orden: nombre del fármaco, nuevo identificador del fármaco y nombre del vocabulario")
+    request = input("Por favor, introduzca los valores: ")
+    list_drug_code_values = [item.strip() for item in request.split(',')]
+
+
     drug_name = list_drug_code_values[0]
     drug_code = list_drug_code_values[1]
     vocabulary = list_drug_code_values[2]

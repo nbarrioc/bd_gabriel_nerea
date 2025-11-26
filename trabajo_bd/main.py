@@ -17,12 +17,25 @@ try:
     # 5. Information about targets
 
     # 5a. Targets of a certain type given
-    list_targets = query_5a(conn)
+    list_targets = queries.query_5a(conn)
 
     print("Lista de las 20 primeras dianas ordenadas alfabéticamente:")
 
-    print(list_targets)
+    for target in list_targets:
+        print(target[0])
 
+    # 5b. Organism with the most number of targets
+    org_more_targets = queries.query_5b(conn)
+
+    print("Organismo con mayor número de dianas distintas: ", org_more_targets[0])
+
+
+    # 6. Deletes
+    queries.query_6(conn)
+
+
+    # 7. Insertions
+    queries.query_7(conn)
 
 
 except mysql.connector.Error as err:
@@ -36,5 +49,3 @@ else:
     conn.close()
     print('Se ha cerrado la conexión correctamente')
 
-
-# %%
