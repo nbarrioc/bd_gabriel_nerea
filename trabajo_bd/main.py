@@ -19,7 +19,7 @@ try:
     section = input("Introduzca el número de sección al que desea acceder ")
 
     match section:
-        case 1:
+        case "1":
             # 1. General information
 
             print("1. Información general\nSecciones:\n\n")
@@ -41,19 +41,23 @@ try:
                     match section1a:
                         case "i":
                             # 1ai. Total number of drugs
-                            queries.query_1ai(conn)
+                            total_drugs = queries.query_1ai(conn)
+                            print(total_drugs)
 
                         case "ii":
                             # 1aii. Total number of diseases
-                            queries.query_1aii(conn)
+                            total_diseases = queries.query_1aii(conn)
+                            print(total_diseases)
 
                         case "iii":
                             # 1aiii. Total number of phenotype effects
-                            queries.query_1aiii(conn)
+                            total_phenotype_effects = queries.query_1aiii(conn)
+                            print(total_phenotype_effects)
 
                         case "iv":
                             # 1aiv. Total number of targets
-                            queries.query_1aiv(conn)
+                            total_targets = queries.query_1aiv(conn)
+                            print(total_targets)
 
                         case _:
                             print("La sección introducida no es válida")
@@ -70,24 +74,28 @@ try:
                     match section1b:
                         case "i":
                             # 1bi. First ten drugs
-                            queries.query_1bi(conn)
+                            ten_drugs = queries.query_1bi(conn)
+                            print(ten_drugs)
 
                         case "ii":
                             # 1bii. First ten diseases
-                            queries.query_1bii(conn)
+                            ten_diseases = queries.query_1bii(conn)
+                            print(ten_diseases)
 
                         case "iii":
                             # 1biii. First ten phenotype effects
-                            queries.query_1biii(conn)
+                            ten_phenotype_effects = queries.query_1biii(conn)
+                            print(ten_phenotype_effects)
 
                         case "iv":
                             # 1biv. First ten targets
-                            queries.query_1biv(conn)
+                            ten_targets = queries.query_1biv(conn)
+                            print(ten_targets)
 
                         case _:
                             print("La sección introducida no es válida")
 
-        case 2:
+        case "2":
             # 2. Information about drugs
 
             print("2. Información sobre fármacos\nSecciones:\n\n")
@@ -99,20 +107,23 @@ try:
             match section2:
                 case "2a":
                     # 2a. Information on a drug, given its ChEMBL ID
-                    queries.query_2a(conn)
+                    drug_info = queries.query_2a(conn)
+                    print(drug_info)
 
                 case "2b":
                     # 2b. Synonymous names of a drug, given its name
-                    queries.query_2b(conn)
+                    drug_synonym = queries.query_2b(conn)
+                    print(drug_synonym)
 
                 case "2c":
                     # 2c. ATC codes associated to a drug, given its ChEMBL ID
-                    queries.query_2c(conn)
+                    drug_ATC = queries.query_2c(conn)
+                    print(drug_ATC)
 
                 case _:
                     print("La sección introducida no es válida")
 
-        case 3:
+        case "3":
             # 3. Information about diseases
 
             print("3. Información sobre enfermedades\nSecciones:\n\n")
@@ -124,16 +135,18 @@ try:
             match section3:
                 case "3a":
                     # 3a. Drugs used to treat a disease, given its name
-                    queries.query_3a(conn)
+                    drug_disease = queries.query_3a(conn)
+                    print(drug_disease)
 
                 case "3b":
                     # 3b. Show the names of the drug and disease whose inferred association score is the highest
-                    queries.query_3b(conn)
+                    drug_disease_higher_score = queries.query_3b(conn)
+                    print(drug_disease_higher_score)
 
                 case _:
                     print("La sección introducida no es válida")
 
-        case 4:
+        case "4":
             # 4. Information about phenotype effects
 
             print("4. Información sobre efectos secundarios\nSecciones:\n\n")
@@ -145,16 +158,18 @@ try:
             match section4:
                 case "4a":
                     # 4a. Phenotype effects indicated to a drug, given its ChEMBL ID
-                    queries.query_4a(conn)
+                    drug_phenotype = queries.query_4a(conn)
+                    print(drug_phenotype)
 
                 case "4b":
                     # 4b. Side effects of a given drug, given its ChEMBL ID
-                    queries.query_4b(conn)
+                    drug_side_effects = queries.query_4b(conn)
+                    print(drug_side_effects)
 
                 case _:
                     print("La sección introducida no es válida")
 
-        case 5:
+        case "5":
             # 5. Information about targets
 
             print("5. Información sobre dianas (targets)\nSecciones:\n\n")
@@ -163,7 +178,7 @@ try:
 
             section5 = input("Introduzca el número de sección al que desea acceder ")
 
-            match section4:
+            match section5:
                 case "5a":
                     # 5a. Targets of a certain type given
                     list_targets = queries.query_5a(conn)
@@ -182,21 +197,21 @@ try:
                 case _:
                     print("La sección introducida no es válida")
 
-        case 6:
+        case "6":
             # 6. Deletes
 
             print("6. Borrados\n")
 
             queries.query_6(conn)
 
-        case 7:
+        case "7":
             # 7. Insertions
 
             print("7. Inserciones\n")
 
             queries.query_7(conn)
 
-        case 8:
+        case "8":
             # 8. Modifications
 
             print("8. Modificaciones\n")
@@ -218,3 +233,5 @@ else:
     conn.close()
     print('Se ha cerrado la conexión correctamente')
 
+
+# %%

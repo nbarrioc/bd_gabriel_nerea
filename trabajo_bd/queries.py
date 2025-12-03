@@ -28,7 +28,7 @@ def query_1ai(conn):
 
     cursor.close()
 
-    return data
+    return data[0][0]
 
 # 1aii. Total number of diseases
 def query_1aii(conn):
