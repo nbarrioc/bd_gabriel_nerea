@@ -6,6 +6,8 @@ from connection import get_connection
 # Import the file containing the different posible queries to carry out
 import queries
 
+
+
 # %%
 # Handle posible errors
 try: 
@@ -75,22 +77,22 @@ try:
                         case "i":
                             # 1bi. First ten drugs
                             ten_drugs = queries.query_1bi(conn)
-                            print(ten_drugs)
+                            ten_drugs
 
                         case "ii":
                             # 1bii. First ten diseases
                             ten_diseases = queries.query_1bii(conn)
-                            print(ten_diseases)
+                            ten_diseases
 
                         case "iii":
                             # 1biii. First ten phenotype effects
                             ten_phenotype_effects = queries.query_1biii(conn)
-                            print(ten_phenotype_effects)
+                            ten_phenotype_effects
 
                         case "iv":
                             # 1biv. First ten targets
                             ten_targets = queries.query_1biv(conn)
-                            print(ten_targets)
+                            ten_targets
 
                         case _:
                             print("La sección introducida no es válida")
@@ -108,17 +110,17 @@ try:
                 case "2a":
                     # 2a. Information on a drug, given its ChEMBL ID
                     drug_info = queries.query_2a(conn)
-                    print(drug_info)
+                    drug_info
 
                 case "2b":
                     # 2b. Synonymous names of a drug, given its name
                     drug_synonym = queries.query_2b(conn)
-                    print(drug_synonym)
+                    drug_synonym
 
                 case "2c":
                     # 2c. ATC codes associated to a drug, given its ChEMBL ID
                     drug_ATC = queries.query_2c(conn)
-                    print(drug_ATC)
+                    drug_ATC
 
                 case _:
                     print("La sección introducida no es válida")
@@ -136,12 +138,12 @@ try:
                 case "3a":
                     # 3a. Drugs used to treat a disease, given its name
                     drug_disease = queries.query_3a(conn)
-                    print(drug_disease)
+                    drug_disease
 
                 case "3b":
                     # 3b. Show the names of the drug and disease whose inferred association score is the highest
                     drug_disease_higher_score = queries.query_3b(conn)
-                    print(drug_disease_higher_score)
+                    drug_disease_higher_score
 
                 case _:
                     print("La sección introducida no es válida")
@@ -158,13 +160,13 @@ try:
             match section4:
                 case "4a":
                     # 4a. Phenotype effects indicated to a drug, given its ChEMBL ID
-                    drug_phenotype = queries.query_4a(conn)
-                    print(drug_phenotype)
+                    drug_phenotype_effect = queries.query_4a(conn)
+                    drug_phenotype_effect
 
                 case "4b":
                     # 4b. Side effects of a given drug, given its ChEMBL ID
                     drug_side_effects = queries.query_4b(conn)
-                    print(drug_side_effects)
+                    drug_side_effects
 
                 case _:
                     print("La sección introducida no es válida")
@@ -182,18 +184,13 @@ try:
                 case "5a":
                     # 5a. Targets of a certain type given
                     list_targets = queries.query_5a(conn)
-
-                    print("Lista de las 20 primeras dianas ordenadas alfabéticamente:")
-
-                    for target in list_targets:
-                        print(target[0])
+                    list_targets
 
                 case "5b":
                     # 5b. Organism with the most number of targets
                     org_more_targets = queries.query_5b(conn)
-
-                    print("Organismo con mayor número de dianas distintas: ", org_more_targets[0])
-
+                    org_more_targets
+                    
                 case _:
                     print("La sección introducida no es válida")
 
