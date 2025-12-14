@@ -507,7 +507,6 @@ def query_6(conn):
     match answer:
         case "s":
             cursor.execute(query2,(inferred_score_selected-0.005,inferred_score_selected+0.005,drug_name_selected,disease_name_selected,))
-            # Aquí habría que poner el conn.commit() si no estuviese el autocommit
             print('Número de filas eliminadas: %s' % (cursor.rowcount))
 
         case _:
@@ -548,7 +547,6 @@ def query_7(conn):
     match answer:
         case "s":
             cursor.execute(query,(drug_name,drug_code,vocabulary,))
-            # Aquí habría que poner el conn.commit() si no estuviese el autocommit
             print('Número de filas insertadas: %s' % (cursor.rowcount))
 
         case _:
@@ -587,7 +585,6 @@ def query_8(conn):
     match answer:
         case "s":
             cursor.execute(query_modification,(score,))
-            # Aquí habría que poner el conn.commit() si no estuviese el autocommit
             print('Número de puntajes anulados: %s' % (cursor.rowcount))
 
         case _:

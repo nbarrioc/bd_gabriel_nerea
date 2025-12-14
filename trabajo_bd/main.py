@@ -17,7 +17,7 @@ try:
     # Starting menu and queries
     while True:
 
-        print("Bienvenido/a al sistema de acceso a la base de datos\nLas secciones son las siguientes:\n")
+        print("\nBienvenido/a al sistema de acceso a la base de datos\nLas secciones son las siguientes:\n")
         print("1. Información general\n2. Información sobre fármacos\n3. Información sobre enfermedades\n4. Información sobre efectos fenotípicos\n5. Información sobre dianas (targets)\n6. Borrados\n7. Inserciones\n8. Modificaciones\n9. Salir\n")
         section = input("Introduzca el número de sección al que desea acceder ")
 
@@ -47,7 +47,7 @@ try:
                                 total_drugs = queries.query_1ai(conn)
                                 print(total_drugs)
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
 
                                 match answer:
@@ -516,6 +516,7 @@ except mysql.connector.Error as err:
 else: 
     conn.close()
     print('Se ha cerrado la conexión correctamente')
+
 
 
 # %%
