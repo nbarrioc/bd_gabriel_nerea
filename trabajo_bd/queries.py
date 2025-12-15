@@ -743,9 +743,10 @@ def query_8(conn):
     # Execute the second query if the user is sure
     match answer:
         case "s":
-            cursor.execute("""SET SQL_SAFE_UPDATES = 0;""")
-            cursor.execute(query_modification,(score,))
+            cursor.execute("""SET SQL_SAFE_UPDATES = 0;""") # Remove the safe update mode
+            cursor.execute(query_modification,(score,)) # Execute the query
             print('Número de puntajes anulados: %s' % (cursor.rowcount))
+            cursor.execute("""SET SQL_SAFE_UPDATES = 1;""") # Restore the safe update mode
 
         case _:
             print("No se modificó ningún valor")

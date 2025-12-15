@@ -26,7 +26,7 @@ try:
             case "1":
                 # 1. General information
 
-                print("1. Información general\nSecciones:\n\n")
+                print("1. Información general\n\nSecciones:\n\n")
                 
                 print("1a. Número total\n1b. Primeras diez instancias\n1c. Volver al menú principal\n1d. Salir\n")
 
@@ -36,9 +36,9 @@ try:
                     case "1a":
                         # 1a. Total number
 
-                        print("1a. Número total\nSecciones:\n\n")
+                        print("1a. Número total\n\nSecciones:\n\n")
                 
-                        print("i. Número total de fármacos\nii. Número total de enfermedades\niii. Número total de efectos fenotípicos\niv. Número total de dianas (targets)\n")
+                        print("i. Número total de fármacos\nii. Número total de enfermedades\niii. Número total de efectos fenotípicos\niv. Número total de dianas (targets)\nv. Volver al menú principal\nvi. Salir\n")
 
                         section1a = input("Introduzca el número de sección al que desea acceder\n")
 
@@ -63,7 +63,7 @@ try:
                                 total_diseases = queries.query_1aii(conn)
                                 print(total_diseases)
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -78,7 +78,7 @@ try:
                                 total_phenotype_effects = queries.query_1aiii(conn)
                                 print(total_phenotype_effects)
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -93,7 +93,7 @@ try:
                                 total_targets = queries.query_1aiv(conn)
                                 print(total_targets)
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -103,10 +103,18 @@ try:
                                         print("Saliendo del programa...")   # close the program
                                         break
 
+                            case "v":
+                                print()   # keep program open
+                                continue
+
+                            case "vi":
+                                print("\nSaliendo del programa...\n")   # close the program
+                                break
+
                             case _:
                                 print("La sección introducida no es válida")   # input section identifier does not match any
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -121,7 +129,7 @@ try:
 
                         print("1b. Primeras diez instancias\nSecciones:\n\n")
                 
-                        print("i. Primeros diez fármacos\nii. Primeras diez enfermedades\niii. Primeros diez efectos fenotípicos\niv. Primeras diez dianas (targets)\n")
+                        print("i. Primeros diez fármacos\nii. Primeras diez enfermedades\niii. Primeros diez efectos fenotípicos\niv. Primeras diez dianas (targets)\nv. Volver al menú principal\nvi. Salir")
 
                         section1b = input("Introduzca el número de sección al que desea acceder\n")
 
@@ -131,7 +139,7 @@ try:
                                 ten_drugs = queries.query_1bi(conn)
                                 ten_drugs
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -146,7 +154,7 @@ try:
                                 ten_diseases = queries.query_1bii(conn)
                                 ten_diseases
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -161,7 +169,7 @@ try:
                                 ten_phenotype_effects = queries.query_1biii(conn)
                                 ten_phenotype_effects
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -176,7 +184,7 @@ try:
                                 ten_targets = queries.query_1biv(conn)
                                 ten_targets
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -186,10 +194,18 @@ try:
                                         print("Saliendo del programa...")   # close the program
                                         break
 
+                            case "v":
+                                print()   # keep program open
+                                continue
+
+                            case "vi":
+                                print("\nSaliendo del programa...\n")   # close the program
+                                break
+
                             case _:
                                 print("La sección introducida no es válida")   # input section identifier does not match any
 
-                                print("¿Desea volver al menú principal?\n")
+                                print("\n¿Desea volver al menú principal?\n")
                                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
@@ -210,7 +226,7 @@ try:
                     case _:
                         print("La sección introducida no es válida")   # input section identifier does not match any
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -236,7 +252,7 @@ try:
                         drug_info = queries.query_2a(conn)
                         drug_info
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -251,7 +267,7 @@ try:
                         drug_synonym = queries.query_2b(conn)
                         drug_synonym
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -266,7 +282,7 @@ try:
                         drug_ATC = queries.query_2c(conn)
                         drug_ATC
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -302,7 +318,7 @@ try:
                         drug_disease = queries.query_3a(conn)
                         drug_disease
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -317,7 +333,7 @@ try:
                         drug_disease_higher_score = queries.query_3b(conn)
                         drug_disease_higher_score
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -353,7 +369,7 @@ try:
                         drug_phenotype_effect = queries.query_4a(conn)
                         drug_phenotype_effect
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -368,7 +384,7 @@ try:
                         drug_side_effects = queries.query_4b(conn)
                         drug_side_effects
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -404,7 +420,7 @@ try:
                         list_targets = queries.query_5a(conn)
                         list_targets
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -419,7 +435,7 @@ try:
                         org_more_targets = queries.query_5b(conn)
                         org_more_targets
 
-                        print("¿Desea volver al menú principal?\n")
+                        print("\n¿Desea volver al menú principal?\n")
                         answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
@@ -447,7 +463,7 @@ try:
 
                 queries.query_6(conn)
 
-                print("¿Desea volver al menú principal?\n")
+                print("\n¿Desea volver al menú principal?\n")
                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
@@ -464,7 +480,7 @@ try:
 
                 queries.query_7(conn)
 
-                print("¿Desea volver al menú principal?\n")
+                print("\n¿Desea volver al menú principal?\n")
                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
@@ -481,7 +497,7 @@ try:
 
                 queries.query_8(conn)
 
-                print("¿Desea volver al menú principal?\n")
+                print("\n¿Desea volver al menú principal?\n")
                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
@@ -492,7 +508,7 @@ try:
                         break
             
             case "9":
-                print("¿Está seguro de que desea salir del programa?\n")
+                print("\n¿Está seguro de que desea salir del programa?\n")
                 answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
@@ -519,3 +535,5 @@ else:
     print('\nSe ha cerrado la conexión correctamente')   # message that lets the user know that the program was correctly closed and stopped executing
 
 
+
+# %%
