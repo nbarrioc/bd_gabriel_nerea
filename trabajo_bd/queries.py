@@ -770,3 +770,5 @@ def query_8(conn):
 
     # Close the cursor
     cursor.close()
+
+#%%
