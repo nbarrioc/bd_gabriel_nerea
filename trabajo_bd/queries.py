@@ -692,19 +692,27 @@ def query_7(conn):
     drug_code = list_drug_code_values[1]
     vocabulary = list_drug_code_values[2]
 
-    # Make sure the user knows he is about to insert new information in the database
-    print("¿Desea introducir la siguiente entrada en la base de datos?")
-    print(f"{drug_name}    {drug_code}    {vocabulary}")
+    # Make sure the drug name provided already exists in the database
+    cursor.execute("SELECT * FROM drug WHERE drug_name=%s;",(drug_name,))
 
-    answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
-    
-    match answer:
-        case "s":
-            cursor.execute(query,(drug_name,drug_code,vocabulary,))
-            print('Número de filas insertadas: %s' % (cursor.rowcount))
+    data=cursor.fetchall()
 
-        case _:
-            print("No se modificó ningún valor")
+    if not data:
+        print("El nombre de fármaco introducido no existe en la base de datos")
+    else:
+        # Make sure the user knows he is about to insert new information in the database
+        print("¿Desea introducir la siguiente entrada en la base de datos?")
+        print(f"{drug_name}    {drug_code}    {vocabulary}")
+
+        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
+        
+        match answer:
+            case "s":
+                cursor.execute(query,(drug_name,drug_code,vocabulary,))
+                print('Número de filas insertadas: %s' % (cursor.rowcount))
+
+            case _:
+                print("No se modificó ningún valor")
 
     # Close the cursor
     cursor.close()
