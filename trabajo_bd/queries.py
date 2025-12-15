@@ -6,9 +6,6 @@ import mysql.connector
 
 
 # %%
-# Selection queries
-
-# %%
 
 # 1. General information
 
@@ -16,7 +13,11 @@ import mysql.connector
 
 # 1ai. Total number of drugs
 def query_1ai(conn):
-    cursor = conn.cursor()
+
+    # Cursor
+    cursor = conn.cursor() 
+
+    # Execute query
     query = """
             SELECT COUNT(DISTINCT drug_id) NumDrugs FROM drug;
             """
@@ -25,8 +26,10 @@ def query_1ai(conn):
 
     cursor.execute(query)
 
+    # Manage results
     data = cursor.fetchall()
 
+    # Close cursor
     cursor.close()
 
     print()
@@ -35,7 +38,11 @@ def query_1ai(conn):
 
 # 1aii. Total number of diseases
 def query_1aii(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute query
     query = """
             SELECT COUNT(DISTINCT disease_id) NumDiseases FROM disease;
             """
@@ -44,8 +51,10 @@ def query_1aii(conn):
 
     cursor.execute(query)
 
+    # Handle results
     data = cursor.fetchall()
 
+    # Close cursor
     cursor.close()
 
     print()
@@ -54,7 +63,11 @@ def query_1aii(conn):
 
 # 1aiii. Total number of phenotype effects
 def query_1aiii(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute query
     query = """
             SELECT COUNT(DISTINCT phenotype_id) NumPhenoEff FROM phenotype_effect;
             """
@@ -63,8 +76,10 @@ def query_1aiii(conn):
 
     cursor.execute(query)
 
+    # Handle results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
     print()
@@ -73,7 +88,11 @@ def query_1aiii(conn):
 
 # 1aiv. Total number of targets
 def query_1aiv(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT COUNT(DISTINCT target_id) NumTargets FROM target;
             """
@@ -82,19 +101,26 @@ def query_1aiv(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
     print()
 
     return data[0][0]
 
+
 # 1b. First ten instances
 
 # 1bi. First ten drugs
 def query_1bi(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute query
     query = """
             SELECT drug_id, drug_name, molecular_type, chemical_structure, inchi_key
             FROM drug WHERE drug_id IS NOT NULL AND drug_name IS NOT NULL
@@ -107,12 +133,15 @@ def query_1bi(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
     print()
 
+    # Return the results in an elegant format
     for item in data:
         result = f"{item[0]}    {item[1]}    {item[2]}    {item[3]}    {item[4]}"
         print(result)
@@ -122,7 +151,11 @@ def query_1bi(conn):
 
 # 1bii. First ten diseases
 def query_1bii(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT * FROM disease WHERE disease_id IS NOT NULL
             AND disease_name IS NOT NULL
@@ -133,12 +166,15 @@ def query_1bii(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
     print()
 
+    # Return the result in a prettier format
     for item in data:
         result = f"{item[0]}    {item[1]}"
         print(result)
@@ -147,7 +183,11 @@ def query_1bii(conn):
 
 # 1biii. First ten phenotype effects
 def query_1biii(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT * FROM phenotype_effect
             WHERE phenotype_id IS NOT NULL
@@ -159,10 +199,13 @@ def query_1biii(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results in a friendly format
     print()
 
     for item in data:
@@ -172,7 +215,11 @@ def query_1biii(conn):
 
 # 1biv. First ten targets
 def query_1biv(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT t.target_id, t.target_name_pref, t.target_type, o.taxonomy_name
             FROM target t, organism o
@@ -188,12 +235,15 @@ def query_1biv(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
     print()
 
+    # Print the results
     for item in data:
         result = f"{item[0]}    {item[1]}    {item[2]}    {item[3]}"
         print(result)
@@ -204,7 +254,11 @@ def query_1biv(conn):
 
 # 2a. Information on a drug, given its ChEMBL ID
 def query_2a(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT drug_name, molecular_type, chemical_structure, inchi_key
             FROM drug WHERE drug_id=%s;
@@ -215,10 +269,13 @@ def query_2a(conn):
 
     cursor.execute(query,(drug_id,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -234,7 +291,11 @@ def query_2a(conn):
 
 # 2b. Synonymous names of a drug, given its name
 def query_2b(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT s.synonymous_name FROM synonymous s, drug d
             WHERE d.drug_id=s.drug_id AND d.drug_id=(SELECT drug_id
@@ -246,10 +307,13 @@ def query_2b(conn):
 
     cursor.execute(query,(drug_name,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -263,7 +327,11 @@ def query_2b(conn):
 
 # 2c. ATC codes associated to a drug, given its ChEMBL ID
 def query_2c(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT atc_code_id FROM atc_code
             WHERE drug_id=%s;
@@ -274,10 +342,13 @@ def query_2c(conn):
 
     cursor.execute(query,(drug_id,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -293,7 +364,11 @@ def query_2c(conn):
 
 # 3a. Drugs used to treat a disease, given its name
 def query_3a(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT d.drug_id, d.drug_name
             FROM drug d, disease_code dc, drug_disease dd
@@ -306,10 +381,13 @@ def query_3a(conn):
 
     cursor.execute(query,(disease_name,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -321,7 +399,11 @@ def query_3a(conn):
 
 # 3b. Show the names of the drug and disease whose inferred association score is the highest
 def query_3b(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT dc.name, d.drug_name, dd.inferred_score
             FROM drug d, disease_code dc, drug_disease dd
@@ -334,10 +416,13 @@ def query_3b(conn):
 
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     for item in data:
@@ -351,7 +436,11 @@ def query_3b(conn):
 
 # 4a. Phenotype effects indicated to a drug, given its ChEMBL ID
 def query_4a(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT p.phenotype_id, p.phenotype_name
             FROM drug d, phenotype_effect p, drug_phenotype_effect dp
@@ -365,10 +454,13 @@ def query_4a(conn):
 
     cursor.execute(query,(drug_id,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -381,7 +473,11 @@ def query_4a(conn):
 
 # 4b. Side effects of a given drug, given its ChEMBL ID
 def query_4b(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT p.phenotype_id, p.phenotype_name, dp.score
             FROM drug d, phenotype_effect p, drug_phenotype_effect dp
@@ -396,10 +492,13 @@ def query_4b(conn):
 
     cursor.execute(query,(drug_id,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -415,7 +514,11 @@ def query_4b(conn):
 
 # 5a. Targets of a certain target type given
 def query_5a(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT target_name_pref
             FROM target
@@ -429,10 +532,13 @@ def query_5a(conn):
 
     cursor.execute(query,(target_type,))
 
+    # Get the results
     data = cursor.fetchall()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     if not data:
@@ -445,10 +551,13 @@ def query_5a(conn):
 
 
 
-# %%
 # 5b. Organism with the most number of targets
 def query_5b(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             SELECT taxonomy_name
             FROM organism, 
@@ -462,22 +571,29 @@ def query_5b(conn):
     
     cursor.execute(query)
 
+    # Get the results
     data = cursor.fetchone()
 
+    # Close the cursor
     cursor.close()
 
+    # Print the results
     print()
 
     print("Organismo con mayor número de dianas distintas: ", data[0])
 
 
 
-# %%
+
 # Modification queries
 
 # 6. Deletes
 def query_6(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the first query
     query1 = """
            SELECT inferred_score, drug_name, disease_name
            FROM drug_disease, drug, disease_has_code, disease
@@ -491,8 +607,10 @@ def query_6(conn):
     
     cursor.execute(query1)
 
+    # Get the results
     interactions = cursor.fetchall()
 
+    # Execute the second query
     query2 = """
              DELETE FROM drug_disease
              WHERE inferred_score BETWEEN %s AND %s AND
@@ -511,16 +629,19 @@ def query_6(conn):
     
     j = 1
 
+    # Print the list with a prettier format, easier to select
     for row in interactions:
         print("[",j,"]. ", row)
         j = j+1
     
+    # Store the values of the chosen item in the list
     option_number = int(input("Por favor, introduzca el número de la fila que desea eliminar: "))
 
     inferred_score_selected = interactions[option_number-1][0]
     drug_name_selected = interactions[option_number-1][1]
     disease_name_selected = interactions[option_number-1][2]
 
+    # Make sure the user knows he is about to delete certain values of the database
     print("¿Desea eliminar la siguiente asociación de fármaco y enfermedad?")
     print(f"Fármaco: {drug_name_selected}\nEnfermedad: {disease_name_selected}\nScore: {inferred_score_selected}")
 
@@ -534,13 +655,18 @@ def query_6(conn):
         case _:
             print("No se modificó ningún valor")
 
+    # Close the cursor
     cursor.close()
 
 
-# %%
+
 # 7. Insertions
 def query_7(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Execute the query
     query = """
             INSERT INTO drug_has_code
             VALUES (
@@ -551,6 +677,7 @@ def query_7(conn):
 	            %s);
           """
     
+    # Store the values given by the user in separate variables
     print("Va a proceder a crear una nueva entrada en la base de datos con la información de codificación de un fármaco ya existente.")
     print("Debe introducir los siguientes valores separados por comas en el siguiente orden: nombre del fármaco, nuevo identificador del fármaco y nombre del vocabulario")
     request = input("Por favor, introduzca los valores: ")
@@ -561,6 +688,7 @@ def query_7(conn):
     drug_code = list_drug_code_values[1]
     vocabulary = list_drug_code_values[2]
 
+    # Make sure the user knows he is about to insert new information in the database
     print("¿Desea introducir la siguiente entrada en la base de datos?")
     print(f"{drug_name}    {drug_code}    {vocabulary}")
 
@@ -574,12 +702,17 @@ def query_7(conn):
         case _:
             print("No se modificó ningún valor")
 
+    # Close the cursor
     cursor.close()
 
 
 # 8. Modifications
 def query_8(conn):
+
+    # Cursor
     cursor = conn.cursor()
+
+    # Define the queries
     query_selection = """
            SELECT * FROM drug_phenotype_effect
            WHERE score<%s
@@ -592,18 +725,22 @@ def query_8(conn):
             AND phenotype_type="SIDE EFFECT";
             """ 
 
+    # Execute the first query
     print("Introduzca un número de puntaje (score) y a continuación se mostrarán las asociaciones entre fármacos y efectos secundarios cuyo puntaje sea inferior al dado.")
     score = input("Score: ")
 
     cursor.execute(query_selection,(score,))
 
+    # Get the result
     data = cursor.fetchall()
 
     print("Asociaciones con puntaje inferior:")
     print(data)
 
+    # Make sure the user knows he is about to change certain database values
     answer = input("¿Desea reemplazar estas puntuaciones por 0? Escribir 's' si se desea, o cualquier otro carácter si no").lower()
     
+    # Execute the second query if the user is sure
     match answer:
         case "s":
             cursor.execute("""SET SQL_SAFE_UPDATES = 0;""")
@@ -613,4 +750,5 @@ def query_8(conn):
         case _:
             print("No se modificó ningún valor")
 
+    # Close the cursor
     cursor.close()

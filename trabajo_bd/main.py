@@ -519,5 +519,3 @@ else:
     print('\nSe ha cerrado la conexión correctamente')   # message that lets the user know that the program was correctly closed and stopped executing
 
 
-
-# %%

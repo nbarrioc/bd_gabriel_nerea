@@ -1,6 +1,7 @@
 # %%
 # Authors: Nerea Barrio, Gabriel Coll
 # Connection establishment
+
 import mysql.connector
 import config_data
 
@@ -15,4 +16,3 @@ def get_connection():
     conn.autocommit = True
     return conn
 
-# %%

@@ -1,5 +1,7 @@
 # %%
-# Sensitive information the user will use to acces the database
+# Authors: Nerea Barrio, Gabriel Coll
+# Script with sensitive information the user will use to access the database
+
 config = {
     'host' :'localhost',
     'port' : 3306,
@@ -8,4 +10,3 @@ config = {
     'database' : 'disnet_drugslayer',
 }
 
-# %%
