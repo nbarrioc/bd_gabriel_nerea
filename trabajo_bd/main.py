@@ -26,21 +26,21 @@ try:
             case "1":
                 # 1. General information
 
-                print("1. Información general\n\nSecciones:\n\n")
+                print("1. Información general\nSecciones:\n\n")
                 
                 print("1a. Número total\n1b. Primeras diez instancias\n1c. Volver al menú principal\n1d. Salir\n")
 
-                section1 = input("Introduzca el número de sección al que desea acceder\n")
+                section1 = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                 match section1:
                     case "1a":
                         # 1a. Total number
 
-                        print("1a. Número total\n\nSecciones:\n\n")
+                        print("1a. Número total\nSecciones:\n\n")
                 
                         print("i. Número total de fármacos\nii. Número total de enfermedades\niii. Número total de efectos fenotípicos\niv. Número total de dianas (targets)\nv. Volver al menú principal\nvi. Salir\n")
 
-                        section1a = input("Introduzca el número de sección al que desea acceder\n")
+                        section1a = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                         match section1a:
                             case "i":
@@ -131,7 +131,7 @@ try:
                 
                         print("i. Primeros diez fármacos\nii. Primeras diez enfermedades\niii. Primeros diez efectos fenotípicos\niv. Primeras diez dianas (targets)\nv. Volver al menú principal\nvi. Salir")
 
-                        section1b = input("Introduzca el número de sección al que desea acceder\n")
+                        section1b = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                         match section1b:
                             case "i":
@@ -244,7 +244,7 @@ try:
                 
                 print("2a. Información sobre un fármaco\n2b. Sinónimos de un fármaco\n2c. Códigos ATC asociados a un fármaco\n2d. Volver al menú principal\n2e. Salir\n")
 
-                section2 = input("Introduzca el número de sección al que desea acceder\n")
+                section2 = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                 match section2:
                     case "2a":
@@ -310,7 +310,7 @@ try:
                 
                 print("3a. Fármacos para tratar una enfermedad\n3b. Fármaco y enfermedad con mayor puntaje de asociación inferido\n3c. Volver al menú principal\n3d. Salir\n")
 
-                section3 = input("Introduzca el número de sección al que desea acceder\n")
+                section3 = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                 match section3:
                     case "3a":
@@ -361,7 +361,7 @@ try:
                 
                 print("4a. Efectos fenotípicos de un fármaco\n4b. Efectos secundarios de un fármaco\n4c. Volver al menú principal\n4d. Salir\n")
 
-                section4 = input("Introduzca el número de sección al que desea acceder\n")
+                section4 = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                 match section4:
                     case "4a":
@@ -412,7 +412,7 @@ try:
                 
                 print("5a. Dianas de un tipo\n5b. Organismo con el mayor número de dianas\n5c. Volver al menú principal\n5d. Salir\n")
 
-                section5 = input("Introduzca el número de sección al que desea acceder\n")
+                section5 = input("Introduzca el número de sección al que desea acceder\n").lower()
 
                 match section5:
                     case "5a":
