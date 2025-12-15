@@ -9,8 +9,6 @@ from connection import get_connection
 # Import the file containing the different posible queries to carry out
 import queries
 
-
-
 # %%
 # Handle possible errors related to the connection to the database (shown towards the end of the script)
 try: 
@@ -51,7 +49,7 @@ try:
                                 print(total_drugs)
 
                                 print("\n¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -66,7 +64,7 @@ try:
                                 print(total_diseases)
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -81,7 +79,7 @@ try:
                                 print(total_phenotype_effects)
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -96,7 +94,7 @@ try:
                                 print(total_targets)
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -109,7 +107,7 @@ try:
                                 print("La sección introducida no es válida")   # input section identifier does not match any
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -134,7 +132,7 @@ try:
                                 ten_drugs
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -149,7 +147,7 @@ try:
                                 ten_diseases
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -164,7 +162,7 @@ try:
                                 ten_phenotype_effects
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -179,7 +177,7 @@ try:
                                 ten_targets
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -192,7 +190,7 @@ try:
                                 print("La sección introducida no es válida")   # input section identifier does not match any
 
                                 print("¿Desea volver al menú principal?\n")
-                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                                 match answer:
                                     case "s":
@@ -213,7 +211,7 @@ try:
                         print("La sección introducida no es válida")   # input section identifier does not match any
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -239,7 +237,7 @@ try:
                         drug_info
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -254,7 +252,7 @@ try:
                         drug_synonym
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -269,7 +267,7 @@ try:
                         drug_ATC
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -305,7 +303,7 @@ try:
                         drug_disease
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -320,7 +318,7 @@ try:
                         drug_disease_higher_score
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -356,7 +354,7 @@ try:
                         drug_phenotype_effect
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -371,7 +369,7 @@ try:
                         drug_side_effects
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -407,7 +405,7 @@ try:
                         list_targets
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -422,7 +420,7 @@ try:
                         org_more_targets
 
                         print("¿Desea volver al menú principal?\n")
-                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                        answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                         match answer:
                             case "s":
@@ -450,7 +448,7 @@ try:
                 queries.query_6(conn)
 
                 print("¿Desea volver al menú principal?\n")
-                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
                     case "s":
@@ -467,7 +465,7 @@ try:
                 queries.query_7(conn)
 
                 print("¿Desea volver al menú principal?\n")
-                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
                     case "s":
@@ -484,7 +482,7 @@ try:
                 queries.query_8(conn)
 
                 print("¿Desea volver al menú principal?\n")
-                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
                     case "s":
@@ -495,7 +493,7 @@ try:
             
             case "9":
                 print("¿Está seguro de que desea salir del programa?\n")
-                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+                answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
 
                 match answer:
                     case "s":
@@ -518,7 +516,7 @@ except mysql.connector.Error as err:
         print(err)
 else: 
     conn.close()
-    print('Se ha cerrado la conexión correctamente')   # message that lets the user know that the program was correctly closed and stopped executing
+    print('\nSe ha cerrado la conexión correctamente')   # message that lets the user know that the program was correctly closed and stopped executing
 
 
 

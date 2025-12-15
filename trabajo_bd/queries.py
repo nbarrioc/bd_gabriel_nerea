@@ -524,7 +524,7 @@ def query_6(conn):
     print("¿Desea eliminar la siguiente asociación de fármaco y enfermedad?")
     print(f"Fármaco: {drug_name_selected}\nEnfermedad: {disease_name_selected}\nScore: {inferred_score_selected}")
 
-    answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+    answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
     
     match answer:
         case "s":
@@ -564,7 +564,7 @@ def query_7(conn):
     print("¿Desea introducir la siguiente entrada en la base de datos?")
     print(f"{drug_name}    {drug_code}    {vocabulary}")
 
-    answer = input("Escribir 's' si se desea, o cualquier otro carácter si no")
+    answer = input("Escribir 's' si se desea, o cualquier otro carácter si no").lower()
     
     match answer:
         case "s":
@@ -602,7 +602,7 @@ def query_8(conn):
     print("Asociaciones con puntaje inferior:")
     print(data)
 
-    answer = input("¿Desea reemplazar estas puntuaciones por 0? Escribir 's' si se desea, o cualquier otro carácter si no")
+    answer = input("¿Desea reemplazar estas puntuaciones por 0? Escribir 's' si se desea, o cualquier otro carácter si no").lower()
     
     match answer:
         case "s":
