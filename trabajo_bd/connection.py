@@ -1,5 +1,6 @@
 # %%
-# Connection stablishment
+# Authors: Nerea Barrio, Gabriel Coll
+# Connection establishment
 import mysql.connector
 import config_data
 
